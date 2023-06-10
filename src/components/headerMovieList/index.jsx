@@ -19,7 +19,7 @@ const Header = (props ) => {
   const title = props.title
 
   return (
-    <Paper component="div" sx={styles.root}>
+    <Paper component="div" sx={styles.root} elevation={3}>
       <IconButton aria-label="go back">
 
         <ArrowBackIcon color="primary" fontSize="large" />
