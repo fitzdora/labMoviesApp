@@ -17,22 +17,24 @@ const styles = {
     flexWrap: "wrap",
     padding: 1.5,
   },
-  avatar: {
-    backgroundColor: "rgb(255, 0, 0)",
-  }
+  /* avatar: {
+    color: "rgb(255, 0, 0)",
+  } */
 };
 
 const MovieHeader = (props) => {
   const movie = props.movie;
-  const [favourites, setFavourites] = useState([]);
+  // const [favourites, setFavourites] = useState([]);
   
   // retrieve movies from locals storage
-  useEffect(() => {
+
+  const favourites = JSON.parse(localStorage.getItem('favourites') || []);
+  /* useEffect(() => {
     const storedFavourites = localStorage.getItem("updatedMovies");
     if (storedFavourites) {
       setFavourites(JSON.parse(storedFavourites));
     }
-  }, []);
+  }, []); */
 
   // set error handling
   const handleAddToFavourite = (e) => {
@@ -44,20 +46,21 @@ const MovieHeader = (props) => {
 
 
     // Update the list of favorite movies
-    let updatedFavourites;
+    /* let updatedFavourites;
     if (isFavorite) {
       updatedFavourites = favourites.filter((id) => id !== movie.id);
     } else {
       updatedFavourites = [...favourites, movie.id];
     }
     
-    setFavourites(updatedFavourites);
+    setFavourites(updatedFavourites); */
 
     // save the update favourites to local storage
-    localStorage.setItem("updatedMovies", JSON.stringify(updatedFavourites));
+    //localStorage.setItem("updatedMovies", JSON.stringify(updatedFavourites));
   
   };
   const isFavorite = favourites.includes(movie.id);
+
    return (
     <Paper component="div" sx={styles.root}>
       <IconButton aria-label="go back">
