@@ -20,7 +20,7 @@ const styles = {
     color: "disabled",
   },
   avatarFavorite: {
-    color: "rgb(255, 0, 0)",
+    backgroundColor: "rgb(255, 0, 0)",
   },
 };
 
@@ -34,7 +34,8 @@ const MovieHeader = (props) => {
   }, []);
 
   const handleAddToFavourite = () => {
-    const isFavorite = favourites.includes(movie.id);
+    const isFavorite = favourites.some((favouriteMovie) => favouriteMovie.id === movie.id);
+    // const isFavorite = favourites.includes(movie.id);
     let updatedFavourites;
     if (isFavorite) {
       updatedFavourites = favourites.filter((id) => id !== movie.id);
@@ -45,8 +46,8 @@ const MovieHeader = (props) => {
     setFavourites(updatedFavourites);
     localStorage.setItem("favourites", JSON.stringify(updatedFavourites));
   };
-
-  const isFavorite = favourites.includes(movie.id);
+  const isFavorite = favourites.some((favouriteMovie) => favouriteMovie.id === movie.id);
+  // const isFavorite = favourites.includes(movie.id);
   const avatarStyle = isFavorite ? styles.avatarFavorite : styles.avatar;
 
   return (
