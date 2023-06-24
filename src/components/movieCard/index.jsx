@@ -16,7 +16,6 @@ import img from '../../images/film-poster-placeholder.png';
 import { Link } from "react-router-dom";
 import { MoviesContext } from "../../contexts/moviesContext";
 
-
 const styles = {
   card: { maxWidth: 345 },
   media: { height: 500 },
@@ -82,7 +81,7 @@ export default function MovieCard({ movie, action }) {      // Destructure props
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-      {action(movie)}
+      {action && action(movie)}
         <Link to={`/movies/${movie.id}`}>
         <Button variant="outlined" size="medium" color="primary">
           More Info ...
