@@ -20,7 +20,7 @@ e.g.
 
 > Lists movies from the Upcoming movies endpoint of TMDB.
 
-![][image1]
+![](image1)
 
 #### Movies Reviews.
 
