@@ -9,8 +9,8 @@ export default {
 
 export const Basic = () => {
   return (
-    <TvCardCard
-      tv={SampleTvSeries}
+    <TvCard
+      tv={SampleTv}
     />
   );
 };
@@ -19,7 +19,7 @@ Basic.storyName = "Default";
 export const Exceptional = () => {
   const sampleNoPoster = { ...SampleTv, poster_path: undefined };
   return (
-    <TvCardCard
+    <TvCard
       tv={sampleNoPoster}
     />
   );

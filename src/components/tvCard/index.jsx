@@ -29,13 +29,13 @@ export default function TvCard(props) {
       <CardHeader sx={styles.header} title={tv.name} />
       <CardMedia
         sx={styles.media}
-       /*  image={
+       image={
           tv.poster_path
-            ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-              https://image.tmdb.org/t/p/w500/${tv.poster_path}
-              https://api.themoviedb.org/3/tv/{series_id}/images
+            ? //`https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+              `https://image.tmdb.org/t/p/w500/${tv.poster_path}`
+              // https://api.themoviedb.org/3/tv/{series_id}/images
             : img
-        } */
+        } 
       />
       <CardContent>
         <Grid container>
