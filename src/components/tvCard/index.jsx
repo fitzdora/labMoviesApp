@@ -33,7 +33,6 @@ export default function TvCard(props) {
           tv.poster_path
             ? //`https://image.tmdb.org/t/p/w500/${movie.poster_path}`
               `https://image.tmdb.org/t/p/w500/${tv.poster_path}`
-              // https://api.themoviedb.org/3/tv/{series_id}/images
             : img
         } 
       />
