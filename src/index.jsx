@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Navigate, Routes, Switch } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools';
 import HomePage from "./pages/homePage";
@@ -10,6 +10,7 @@ import MovieReviewPage from "./pages/movieReviewPage"; //NEW
 import SiteHeader from "./components/siteHeader"; //NEW
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
 import MoviesContextProvider from "./contexts/moviesContext";
+import TvContextProvider from "./contexts/tvContext";
 import AddMovieReviewPage from "./pages/addMovieReviewPage";
 
 
@@ -24,12 +25,15 @@ const queryClient = new QueryClient({
   },
 });
 
+const tv_series = [sample, sample, sample, sample, sample, sample, sample];
 
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
     <BrowserRouter>
-      <SiteHeader />      {/* New Header  */}
+    <SiteHeader />      {/* New Header  */}
+    <Switch>
+      <Route exact path="/movies">
       <MoviesContextProvider>
       <Routes>
         <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
@@ -41,6 +45,13 @@ const App = () => {
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       </MoviesContextProvider>
+      </Route>
+      <Route exact path="/tv-series">
+      <TvContextProvider>
+      <HomePage tv_series={tv_series} />
+      </TvContextProvider>
+      </Route>
+      </Switch>
     </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
