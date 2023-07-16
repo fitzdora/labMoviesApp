@@ -5,6 +5,16 @@ export default {
       9648,
       18
     ],
+    genres: [
+      {
+        id: 18,
+        name: "Drama",
+      },
+      {
+        id: 9648,
+        name: "Mystery",
+      },
+    ],
     id: 202250,
     name: "Dirty Linen",
     origin_country: [
