@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "@mui/material/Card";
+import { getTvGenres } from "../../api/tmdb-api";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import InputLabel from "@mui/material/InputLabel";

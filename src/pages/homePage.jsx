@@ -1,37 +1,51 @@
 import React from "react";
 import PageTemplate from "../components/templateMovieListPage";
-import { getMovies } from "../api/tmdb-api";
+import TvListPageTemplate from "../components/templateTvListPage";
+import MovieListPageTemplate from "../components/templateMovieListPage";
+import { getMovies, getTvSeries } from "../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from "../components/spinner";
 import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
 import { MoviesContext } from "../contexts/moviesContext";
-// import SampleTv from "./sampleData_tv";
-// import { TvContext } from "../contexts/tvContext";
-
-
+import { TvContext } from "../contexts/tvContext";
 
 const HomePage = (props) => {
-  const { data, error, isLoading, isError } = useQuery("discover", getMovies);
-  const { addToFavourites } = React.useContext(MoviesContext);
+  const { data: movieData, error: movieError, isLoading: movieLoading, isError: movieIsError } = useQuery("discoverMovies", getMovies);
+  const { data: tvData, error: tvError, isLoading: tvLoading, isError: tvIsError } = useQuery("discoverTv", getTvSeries);
+  
+  const { addToFavouritesMovies } = React.useContext(MoviesContext);
+  const { addToFavouritesTv} = React.useContext(TvContext);
 
-
-
-  if (isLoading) {
+  if (movieLoading || tvLoading) {
     return <Spinner />;
   }
-  if (isError) {
-    return <h1>{error.message}</h1>;
+  
+  if (movieIsError || tvIsError) {
+    return (
+      <div>
+      <h1>Error</h1>
+      <p>{movieError && movieError.message}</p>
+      <p>{tvError && tvError.message}</p>
+      </div>
+    );
   }
- 
 
-  const movies = data ? data.results : [];
+  const movies = movieData ? movieData.results : [];
+  const tvSeries = tvData ? tvData.results : [];
 
   return (
-    <PageTemplate
-      title="Discover Movies"
-      movies={movies}
-      action={(movie) => <AddToFavouritesIcon movie={movie} addToFavourites={addToFavourites} />}
+    <div>
+      <MovieListPageTemplate
+        title="Discover Movies"
+        movies={movies}
+        action={(movie) => <AddToFavouritesIcon movie={movie} addToFavourites={addToFavouritesMovies} />}
       />
+      <TvListPageTemplate
+        title="Discover TV Series"
+        tv={tvSeries}
+        action={(tv) => <AddToFavouritesIcon tvSeries={tv} addToFavourites={addToFavouritesTv} />}
+      />
+    </div>
   );
 };
 
