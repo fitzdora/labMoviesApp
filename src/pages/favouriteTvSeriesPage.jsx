@@ -4,7 +4,9 @@ import { TvContext } from "../contexts/tvContext";
 import { useQueries } from "react-query";
 import { getTv } from "../api/tmdb-api";
 import Spinner from "../components/spinner";
-import { Tv } from "@mui/icons-material";
+// import { Tv } from "@mui/icons-material";
+import RemoveFromFavourites from "../components/cardIcons/removeFromFavourites";
+import WriteReview from "../components/cardIcons/writeReview";
 
 const FavouriteTvSeriesPage = (props) => {
     const { favourites: tvIds } = useContext(TvContext);
@@ -25,13 +27,18 @@ const FavouriteTvSeriesPage = (props) => {
     }
 
     const tv_series = favouriteTvQueries.map((q) => q.data);
-    const toDo = () => true;
+    // const toDo = () => true;
 
     return (
         <TvListPageTemplate
-        title = "Favourite Tv Series"
+        name = "Favourite Tv Series"
         tv_series={tv_series}
-        selectFavourite={toDo}
+        action={(tv) => (
+            <>
+              <RemoveFromFavourites tv={tv} />
+              <WriteReview tv={tv} />
+            </>
+          )}
         />
     );
 };

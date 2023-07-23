@@ -1,5 +1,5 @@
 import React from "react";
-import PageTemplate from "../components/templateMovieListPage";
+// import PageTemplate from "../components/templateMovieListPage";
 import TvListPageTemplate from "../components/templateTvListPage";
 import MovieListPageTemplate from "../components/templateMovieListPage";
 import { getMovies, getTvSeries } from "../api/tmdb-api";
@@ -9,7 +9,7 @@ import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
 import { MoviesContext } from "../contexts/moviesContext";
 import { TvContext } from "../contexts/tvContext";
 
-const HomePage = (props) => {
+const HomePage = () => {
   const { data: movieData, error: movieError, isLoading: movieLoading, isError: movieIsError } = useQuery("discoverMovies", getMovies);
   const { data: tvData, error: tvError, isLoading: tvLoading, isError: tvIsError } = useQuery("discoverTv", getTvSeries);
   
@@ -41,7 +41,7 @@ const HomePage = (props) => {
         action={(movie) => <AddToFavouritesIcon movie={movie} addToFavourites={addToFavouritesMovies} />}
       />
       <TvListPageTemplate
-        title="Discover TV Series"
+        name="Discover TV Series"
         tv={tvSeries}
         action={(tv) => <AddToFavouritesIcon tvSeries={tv} addToFavourites={addToFavouritesTv} />}
       />

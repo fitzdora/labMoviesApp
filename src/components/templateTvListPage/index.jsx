@@ -18,7 +18,7 @@ const styles = {
   },
 };
 
-function TvListPageTemplate({ tv, name, selectFavourite }) {
+function TvListPageTemplate({ tv, name, action, upcoming }) {
   const [nameFilter, setNameFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -45,9 +45,8 @@ function TvListPageTemplate({ tv, name, selectFavourite }) {
           <TvHeader name={name} />
         </Grid>
         <Grid item container spacing={5}>
-          <TvList
-            tv_series={displayedTvSeries}
-            selectFavourite={selectFavourite}
+          <TvList action={action} 
+          tv_series={displayedTvSeries}
           />
         </Grid>
       </Grid>
