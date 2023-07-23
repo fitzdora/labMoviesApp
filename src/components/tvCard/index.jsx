@@ -26,14 +26,15 @@ const styles = {
 
 export default function TvCard({ tv, action }) {
   const { favourites, addToFavourites } = useContext(TvContext);
+  const isFavorite = favourites.includes(tv.id);
   // const tv = props.tv;
 
-  if (favourites.find((id) => id === tv.id)) {
+/*   if (favourites.find((id) => id === tv.id)) {
     tv.favourite = true;
   } else {
     tv.favourite = false;
   }
-
+ */
 /*   const handleAddToFavourite = (e) => {
     e.preventDefault();
     addToFavourites(tv);
@@ -41,7 +42,21 @@ export default function TvCard({ tv, action }) {
 
   return (
     <Card sx={styles.card}>
-      <CardHeader sx={styles.header} title={tv.name} />
+       <CardHeader
+      sx={styles.header}
+      avatar={
+        isFavorite ? (
+          <Avatar sx={styles.avatar}>
+            <FavoriteIcon />
+          </Avatar>
+        ) : null
+      }
+      title={
+        <Typography variant="h5" component="p">
+          {tv.name}{" "}
+        </Typography>
+      }
+    /> 
       <CardMedia
         sx={styles.media}
        image={

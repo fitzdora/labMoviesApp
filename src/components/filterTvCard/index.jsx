@@ -34,11 +34,6 @@ export default function FilterTvCard(props) {
     return <Spinner />;
   }
 
-  
-  if (isLoading) {
-    return <Spinner />;
-  }
-
   if (isError) {
     return <h1>{error.message}</h1>;
   }
@@ -47,17 +42,17 @@ export default function FilterTvCard(props) {
     genres.unshift({ id: "0", name: "All" });
   }
 
-  const handleUserImput = (e, type, value) => {
+  const handleUserInput = (e, type, value) => {
     e.preventDefault();
     props.onUserInput(type, value); // NEW
   };
 
   const handleTextChange = (e, props) => {
-    handleUserImput(e, "title", e.target.value);
+    handleUserInput(e, "name", e.target.value);
   };
 
   const handleGenreChange = (e) => {
-    handleUserImput(e, "genre", e.target.value);
+    handleUserInput(e, "genre", e.target.value);
   };
 
   return (

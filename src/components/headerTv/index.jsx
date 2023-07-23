@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Avatar from "@mui/material/Avatar";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import HomeIcon from "@mui/icons-material/Home";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const styles = {
     root: {  
@@ -14,16 +16,51 @@ const styles = {
     flexWrap: "wrap",
     padding: 1.5,
   },
+  avatar: {
+    color: "disabled",
+  },
+  avatarFavorite: {
+    backgroundColor: "rgb(255, 0, 0)",
+  },
 };
 
 const TvMainHeader = (props) => {
   const tv = props.tv;
+  const [favourites, setFavourites] = useState([]);
+
+  useEffect(() => {
+    const storedFavourites = JSON.parse(localStorage.getItem("favourites")) || [];
+    setFavourites(storedFavourites);
+  }, []);
+
+  const handleAddToFavourite = () => {
+    const isFavorite = favourites.some((favouriteTv) => favouriteTv.id === tv.id);
+    let updatedFavourites;
+    if (isFavorite) {
+      updatedFavourites = favourites.filter((id) => id !== tv.id);
+    } else {
+      updatedFavourites = [...favourites, tv.id];
+    }
+
+    setFavourites(updatedFavourites);
+    localStorage.setItem("favourites", JSON.stringify(updatedFavourites));
+  };
+  const isFavorite = favourites.some((favouriteTv) => favouriteTv.id === tv.id);
+  const avatarStyle = isFavorite ? styles.avatarFavorite : styles.avatar;
 
   return (
     <Paper component="div" sx={styles.root}>
       <IconButton aria-label="go back">
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>
+
+      <Avatar sx={avatarStyle}>
+        {isFavorite ? (
+          <FavoriteIcon color="inherit" />
+        ) : (
+          <FavoriteIcon />
+        )}
+      </Avatar>
 
       <Typography variant="h4" component="h3">
         {tv.name}{"   "} 
