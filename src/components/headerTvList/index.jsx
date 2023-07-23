@@ -15,7 +15,7 @@ const styles = {
   },
 };
 
-const TvHeader = (props ) => {
+const TvHeader = (props) => {
   const title = props.title
 
   return (

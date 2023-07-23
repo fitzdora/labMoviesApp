@@ -31,7 +31,7 @@ const styles = {
   },
 };
 
-const TvDetails = ({movie}) => {
+const TvDetails = ({tv}) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
