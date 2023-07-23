@@ -1,18 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import TvDetails from "../components/tvDetails";
 import TemplateTvPage from "../components/templateTvPage";
 import { getTv } from "../api/tmdb-api";
+import useTv from "../hooks/useTv";
 
 const TvDetailsPage = (props) => {
   const { id } = useParams();
-  const [tv, setTv] = useState(null);
-
-  useEffect(() => {
-    getTv(id).then((tv) => {
-      setTv(tv);
-    });
-  }, [id]);
+  const [tv] = useTv(id);
 
   return (
     <>
