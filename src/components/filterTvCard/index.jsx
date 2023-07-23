@@ -1,6 +1,6 @@
 import React from "react";
-import Card from "@mui/material/Card";
 import { getTvGenres } from "../../api/tmdb-api";
+import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import InputLabel from "@mui/material/InputLabel";
@@ -8,9 +8,11 @@ import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import SortIcon from '@mui/icons-material/Sort';
-
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import { useQuery } from "react-query";
+import { useQueryClient } from "react-query";
+import Spinner from '../spinner';
 
 const styles = {
   root: {
@@ -26,11 +28,37 @@ const styles = {
 };
 
 export default function FilterTvCard(props) {
-  const genres = [
-    {id: 1, name: "Documentary"},
-    {id: 2, name: "Family"},
-    {id: 3, name: "News"}
-  ]
+  const { data, error, isLoading, isError } = useQuery("genres", getTvGenres);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  if (isError) {
+    return <h1>{error.message}</h1>;
+  }
+  const genres = data.genres;
+  if (genres[0].name !== "All") {
+    genres.unshift({ id: "0", name: "All" });
+  }
+
+  const handleUserImput = (e, type, value) => {
+    e.preventDefault();
+    props.onUserInput(type, value); // NEW
+  };
+
+  const handleTextChange = (e, props) => {
+    handleUserImput(e, "title", e.target.value);
+  };
+
+  const handleGenreChange = (e) => {
+    handleUserImput(e, "genre", e.target.value);
+  };
 
   return (
     <>
@@ -45,13 +73,17 @@ export default function FilterTvCard(props) {
           id="filled-search"
           label="Search field"
           type="search"
+          value={props.nameFilter}
           variant="filled"
+          onChange={handleTextChange}
         />
         <FormControl sx={styles.formControl}>
           <InputLabel id="genre-label">Genre</InputLabel>
           <Select
             labelId="genre-label"
             id="genre-select"
+            value={props.genreFilter}
+            onChange={handleGenreChange}
           >
             {genres.map((genre) => {
               return (

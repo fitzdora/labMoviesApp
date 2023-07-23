@@ -3,11 +3,27 @@ import { useParams } from "react-router-dom";
 import TvDetails from "../components/tvDetails";
 import TemplateTvPage from "../components/templateTvPage";
 import { getTv } from "../api/tmdb-api";
-import useTv from "../hooks/useTv";
+import { useQuery } from "react-query";
+import Spinner from "../components/spinner";
+// import useTv from "../hooks/useTv";
 
-const TvDetailsPage = (props) => {
+const TvDetailsPage = () => {
   const { id } = useParams();
-  const [tv] = useTv(id);
+  // const [tv] = useTv(id);
+
+  const { data: tv, error, isLoading, isError } = useQuery(
+    ["tv", {id: id}],
+    getTv
+  );
+
+  if(isLoading){
+    return <Spinner />;
+  }
+
+  if (isError)
+  {
+    return <h1>{error.message}</h1>
+  }
 
   return (
     <>
