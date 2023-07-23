@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -11,7 +11,8 @@ import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
 import StarRateIcon from "@mui/icons-material/StarRate";
 import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
-import img from '../../images/film-poster-placeholder.png'
+import img from '../../images/film-poster-placeholder.png';
+import { TvContext } from "../../contexts/tvContext";
 
 const styles = {
   card: { maxWidth: 345 },
@@ -21,8 +22,20 @@ const styles = {
   },
 };
 
-export default function TvCard(props) {
-  const tv = props.tv;
+export default function TvCard({ tv }) {
+  const { favourites, addToFavourites } = useContext(TvContext);
+  // const tv = props.tv;
+
+  if (favourites.find((id) => id === tv.id)) {
+    tv.favourite = true;
+  } else {
+    tv.favourite = false;
+  }
+
+  const handleAddToFavourite = (e) => {
+    e.preventDefault();
+    addToFavourites(tv);
+  };
 
   return (
     <Card sx={styles.card}>
