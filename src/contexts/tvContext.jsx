@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
 
 export const TvContext = React.createContext(null);
 
@@ -6,7 +7,7 @@ const TvContextProvider = (props) => {
   const [myReviews, setMyReviews] = useState( {} ); 
   const [favourites, setFavourites] = useState([]);
 
-  const addToFavourites = (tv) => {
+  const addToTvFavourites = (tv) => {
     let updatedFavourites = [...favourites];
     if (!favourites.includes(tv.id)) {
       updatedFavourites.push(tv.id);
@@ -15,7 +16,7 @@ const TvContextProvider = (props) => {
   };
 
   // We will use this function in a later section
-  const removeFromFavourites = (tv) => {
+  const removeFromTvFavourites = (tv) => {
     setFavourites(favourites.filter((tvId) => tvId !== tv.id));
   };
 
@@ -27,8 +28,8 @@ const TvContextProvider = (props) => {
     <TvContext.Provider
       value={{
         favourites,
-        addToFavourites,
-        removeFromFavourites,
+        addToTvFavourites,
+        removeFromTvFavourites,
         addReview, // New
       }}
     >
