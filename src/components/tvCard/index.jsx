@@ -26,7 +26,7 @@ const styles = {
 
 export default function TvCard({ tv, action }) {
   //const { tvId } = tv;
-  const { favourites, addToFavourites } = useContext(TvContext);
+  const { favourites, addToTvFavourites } = useContext(TvContext);
   const isFavorite = favourites.includes(tv.id);
   // const tv = props.tv;
 
@@ -85,10 +85,11 @@ export default function TvCard({ tv, action }) {
       </CardContent>
       <CardActions disableSpacing>
         {action && action(tv)}
-        <Link to={`/tv/${tv.id}`}></Link>
+        <Link to={`/tv/${tv.id}`}>
         <Button variant="outlined" size="medium" color="primary">
           More Info ...
         </Button>
+        </Link>
       </CardActions>
     </Card>
   );
