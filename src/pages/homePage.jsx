@@ -41,7 +41,7 @@ const HomePage = () => {
         action={(movie) => <AddToFavouritesIcon movie={movie} addToFavourites={addToFavouritesMovies} />}
       />
       <TvListPageTemplate
-        name="Discover TV Series"
+        title="Discover TV Series"
         tv={tvSeries}
         action={(tv) => <AddToFavouritesIcon tvSeries={tv} addToFavourites={addToFavouritesTv} />}
       />
