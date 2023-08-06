@@ -16,7 +16,7 @@ const styles = {
 };
 
 const TvHeader = (props) => {
-  const title = props.title
+  const title = props.title;
 
   return (
     <Paper component="div" sx={styles.root}>

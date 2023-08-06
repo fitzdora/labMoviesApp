@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 // import PageTemplate from '../components/templateMovieListPage'
-import TemplateTvPage from "../components/templateTvPage";
+import TvListPageTemplate from "../components/templateTvListPage";
 import { getUpcomingTvSeries } from "../api/tmdb-api";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import { useQuery } from "react-query";
@@ -35,7 +35,7 @@ const UpcomingTvSeriesPage = (props) => {
   
 
   return (
-    <TemplateTvPage
+    <TvListPageTemplate
       title='Upcoming Tv'
       tv={tv}
       action={(tv) => (
