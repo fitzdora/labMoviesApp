@@ -25,6 +25,7 @@ const styles = {
 };
 
 export default function TvCard({ tv, action }) {
+  //const { tvId } = tv;
   const { favourites, addToFavourites } = useContext(TvContext);
   const isFavorite = favourites.includes(tv.id);
   // const tv = props.tv;
