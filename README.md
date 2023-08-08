@@ -32,11 +32,11 @@ e.g.
 
 > Lists all the reviews for a particular movie (shows text extract only).
 
-![][image2]
+
 
 > Click the 'Full Review' link of a review extract to see the review's full text. 
 
-![][image3]
+
 
 ## TV Filter
 
@@ -50,7 +50,7 @@ e.g.
 
 e.g.
 
-![Highlighted Storybook][image5]
+![Highlighted Storybook][image3]
 
 ## Authentication. (if relevant)
 
@@ -98,4 +98,4 @@ Username: test1 ; Password: pass1
 
 [image1]: ./images/image1.png
 [image2]: ./images/image2.png
-[image5]: ./images/image5.png
+[image3]: ./images/image3.png
