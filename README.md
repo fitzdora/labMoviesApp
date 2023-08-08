@@ -22,11 +22,11 @@ __Video URL:__[https://youtu.be/t5L1mgC0Rz0]
 
 e.g. 
 
-#### Upcoming TV.
+#### Overview TV.
 
-> Lists movies from the Upcoming movies endpoint of TMDB.
+> Lists Tv Shows from the discover endpoint of TMDB.
 
-![][image1]
+![List of Tv Shows][image1]
 
 #### TV Reviews.
 
@@ -38,7 +38,11 @@ e.g.
 
 ![][image3]
 
-.... other features .......
+## TV Filter
+
+> Shows the TV Filter feature - non functional at present
+
+![TV Filter Feature][image2]
 
 ## Storybook.
 
@@ -94,6 +98,4 @@ Username: test1 ; Password: pass1
 
 [image1]: ./images/image1.png
 [image2]: ./images/image2.png
-[image3]: ./images/image3.png
-[image4]: ./images/image4.png
 [image5]: ./images/image5.png
