@@ -26,7 +26,7 @@ e.g.
 
 > Lists Tv Shows from the discover endpoint of TMDB.
 
-![List of Tv Shows][/image1.png]
+![List of Tv Shows][image1]
 
 #### TV Reviews.
 
