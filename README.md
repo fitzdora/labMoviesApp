@@ -1,14 +1,20 @@
 # Full Stack Development 2 - Assignment.
 
 __Name:__ [Isadora Fitzgerald]
+__Student Id:__[W20099887]
+__Video URL:__[https://youtu.be/t5L1mgC0Rz0]
+
 
 ## Features.
 
 [A bullet-point list of the features developed for the React SPA app (only new/modified ones for the Movies app),]
 
-+ Feature X.
-+ Feature Y. 
-+ etc.
++ TV Card
++ TV List
++ TV List Header
++ Filter TV 
++ TV Details
++ TV Reviews
 
 ## Feature Design.
 
@@ -16,13 +22,13 @@ __Name:__ [Isadora Fitzgerald]
 
 e.g. 
 
-#### Upcoming Movies.
+#### Upcoming TV.
 
 > Lists movies from the Upcoming movies endpoint of TMDB.
 
 ![][image1]
 
-#### Movies Reviews.
+#### TV Reviews.
 
 > Lists all the reviews for a particular movie (shows text extract only).
 
@@ -40,7 +46,7 @@ e.g.
 
 e.g.
 
-![][image5]
+![Highlighted Storybook][image5]
 
 ## Authentication. (if relevant)
 
@@ -48,15 +54,20 @@ e.g.
 
 [List all the routes in your app and highlight those that are protected/private (require authentication).]
 
-e.g.
+Full list - however none are protected
 
-+ /movies - List of 20  movies from the Discover endpoint,
-+ /movies/{movie_id} - Detailed information on a specific movie.
-+ /reviews/{review_id} (Protected) - The full text of a movie review.
-+ /movie/{movie_id}/similar - A list of similar movies. 
-+ /person/{person_id} (Protected) - A specific actor's bio.
-+ etc
-+ etc
++ /movies - List of 20 movies from the Discover endpoint,
++ /movies/upcoming - Upcoming movies list,
++ /movies/favourites - List of chosen favourite movies,
++ /movies/:id - Detailed information on a specific movie,
++ /reviews/:id/reviews/form - Form to add a movie review,
++ /movies/:id/reviews/:reviewId - The full text of a movie review,
++ /tv/series  - List of 20 tv shows from the Discover endpoint,
++ /tv/:id - Detailed information on a specific tv series,
++ /tv/:id/reviews/:reviewId - The full text of a tv show review,
++ /tv/upcoming - Upcoming Tv Series List,
++ /tv/favourites - List of chosen favourite tv series,
++ /tv/:id/reviews/form - Form to add a tv review,
 
 #### Protected functionality. (if relevant)
 
